@@ -67,7 +67,7 @@ namespace infini
         // REF_FILE: src/core/operator.cc
         // REF: https://onnx.ai/onnx/operators/onnx__Cast.html#cast-21
         // =================================== 作业 ===================================
-        auto dataType = inputs[0]->getDType();
+        auto dataType = getOutputDataType();
         return vector(numOutputs(), dataType);
     }
 

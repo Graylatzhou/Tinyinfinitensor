@@ -29,7 +29,20 @@ namespace infini
         // =================================== 作业 ===================================
         auto M = inputs[0];
         auto N = inputs[1];
-        return std::nullopt;
+        auto M_shape = M->getDims();
+        auto N_shape = N->getDims();
+        if (this->transA)
+        {
+            std::swap(M_shape[M_shape.size() - 1], M_shape[M_shape.size() - 2]);
+        }
+        if (this->transB)
+        {
+            std::swap(N_shape[N_shape.size() - 1], N_shape[N_shape.size() - 2]);
+        }
+        auto output_shape = M_shape;
+        output_shape[output_shape.size() - 1] = N_shape[N_shape.size() - 1];
+        return {{output_shape}};
+        
     }
 
 } // namespace infini
